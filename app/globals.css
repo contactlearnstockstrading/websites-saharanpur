@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5f0e8;
+  --foreground: #2c2418;
+  --beige-light: #faf7f2;
+  --beige: #f5f0e8;
+  --beige-dark: #e8dfd3;
+  --brown: #8b7355;
+  --brown-dark: #5c4a32;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-heading {
+  letter-spacing: -0.02em;
+}
+
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
