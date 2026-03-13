@@ -5,7 +5,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import { ArrowDown, MessageCircle, Sparkles } from "lucide-react";
 
 const stats = [
-  { label: "Templates", value: "12+" },
+  { label: "Templates", value: "17+" },
   { label: "Happy Clients", value: "50+" },
   { label: "Delivery", value: "24hr" },
 ];
