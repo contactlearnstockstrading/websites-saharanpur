@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Zap } from "lucide-react";
 import { siteConfig } from "@/config/site-config";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
@@ -17,14 +17,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-beige-100/80 backdrop-blur-xl border-b border-beige-300/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-beige-800 flex items-center justify-center text-beige-100 font-bold text-sm">
-              S
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
             </div>
-            <span className="font-heading font-bold text-beige-900 text-lg">
+            <span className="font-heading font-bold text-white text-lg tracking-tight">
               {siteConfig.business.name}
             </span>
           </Link>
@@ -34,7 +34,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-body text-beige-600 hover:text-beige-900 transition-colors"
+                className="text-sm font-body text-zinc-400 hover:text-white transition-colors"
               >
                 {link.label}
               </a>
@@ -43,15 +43,15 @@ export default function Navbar() {
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 bg-beige-900 hover:bg-beige-800 text-beige-100 text-sm font-body font-semibold rounded-full transition-all hover:scale-105"
+              className="px-5 py-2 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-400 hover:to-pink-500 text-white text-sm font-body font-semibold rounded-full transition-all hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25"
             >
-              WhatsApp Us
+              Get Started
             </a>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-beige-900 p-2"
+            className="md:hidden text-white p-2"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -64,7 +64,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-beige-100/95 backdrop-blur-xl border-b border-beige-300/50"
+            className="md:hidden bg-zinc-950/95 backdrop-blur-xl border-b border-white/5"
           >
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
@@ -72,7 +72,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block text-sm font-body text-beige-600 hover:text-beige-900 py-2"
+                  className="block text-sm font-body text-zinc-400 hover:text-white py-2"
                 >
                   {link.label}
                 </a>
@@ -81,9 +81,9 @@ export default function Navbar() {
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center px-4 py-2 bg-beige-900 text-beige-100 text-sm font-body font-semibold rounded-full"
+                className="block text-center px-4 py-2.5 bg-gradient-to-r from-orange-500 to-pink-600 text-white text-sm font-body font-semibold rounded-full"
               >
-                WhatsApp Us
+                Get Started
               </a>
             </div>
           </motion.div>

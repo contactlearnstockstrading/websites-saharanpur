@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
-import { ArrowDown, MessageCircle } from "lucide-react";
+import { ArrowDown, MessageCircle, Sparkles } from "lucide-react";
 
 const stats = [
   { label: "Templates", value: "12+" },
@@ -11,87 +11,75 @@ const stats = [
 ];
 
 export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const els = containerRef.current?.querySelectorAll(".hero-anim");
+    if (!els) return;
+    els.forEach((el, i) => {
+      setTimeout(() => el.classList.add("animate"), i * 100);
+    });
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-beige-200">
-      {/* Background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-zinc-950">
+      {/* Bold gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,115,85,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(139,115,85,.04)_1px,transparent_1px)] bg-[size:64px_64px]" />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-beige-400/40 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-beige-500/30 rounded-full blur-[128px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-b from-orange-500/20 via-pink-500/10 to-transparent rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600/10 rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-block px-4 py-1.5 rounded-full bg-beige-900/5 border border-beige-400 text-sm text-beige-700 font-body mb-6"
-        >
+      <div
+        ref={containerRef}
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <div className="hero-anim reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-zinc-300 font-body mb-8">
+          <Sparkles className="w-4 h-4 text-orange-400" />
           Trusted by 50+ businesses in Saharanpur
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-beige-900 leading-tight mb-6"
-        >
-          Beautiful Websites for{" "}
-          <span className="text-beige-600 italic">
-            Every Shop
-          </span>{" "}
-          in Saharanpur
-        </motion.h1>
+        <h1 className="hero-anim reveal text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-[0.95] mb-6 tracking-tight">
+          Websites That
+          <br />
+          <span className="text-gradient">Make You Stand Out</span>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg md:text-xl text-beige-600 font-body max-w-2xl mx-auto mb-8"
-        >
-          Premium, ready-to-launch website templates for doctors, bakeries,
-          salons, cafes, and more. Just add your images &amp; go live.
-        </motion.p>
+        <p className="hero-anim reveal text-lg md:text-xl text-zinc-400 font-body max-w-2xl mx-auto mb-10 leading-relaxed">
+          Premium, ready-to-launch templates for doctors, bakeries,
+          salons, cafes &amp; more. Just add your images — go live in 24 hours.
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-        >
+        <div className="hero-anim reveal flex flex-col sm:flex-row gap-4 justify-center mb-14">
           <a
             href="#templates"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-beige-900 text-beige-100 font-body font-semibold rounded-full hover:bg-beige-800 transition-all hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-body font-bold rounded-full hover:from-orange-400 hover:to-pink-500 transition-all hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 text-lg"
           >
             Explore Templates
-            <ArrowDown className="w-4 h-4" />
+            <ArrowDown className="w-5 h-5" />
           </a>
           <a
             href={getWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-green-600 hover:bg-green-700 text-white font-body font-semibold rounded-full transition-all hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-body font-semibold rounded-full transition-all hover:scale-105 text-lg"
           >
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="w-5 h-5 text-green-400" />
             WhatsApp Us
           </a>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex justify-center gap-8 sm:gap-16"
-        >
+        <div className="hero-anim reveal flex justify-center gap-12 sm:gap-20">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-heading font-bold text-beige-900">
+              <div className="text-3xl sm:text-4xl font-heading font-bold text-white">
                 {stat.value}
               </div>
-              <div className="text-sm text-beige-500 font-body">{stat.label}</div>
+              <div className="text-sm text-zinc-500 font-body mt-1">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

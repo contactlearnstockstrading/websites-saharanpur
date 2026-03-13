@@ -14,6 +14,11 @@ import PaintShopTemplate from "@/components/templates/PaintShopTemplate";
 import MutualFundsTemplate from "@/components/templates/MutualFundsTemplate";
 import BrokerTemplate from "@/components/templates/BrokerTemplate";
 import GeneralStoreTemplate from "@/components/templates/GeneralStoreTemplate";
+import LawyerTemplate from "@/components/templates/LawyerTemplate";
+import WebDevTemplate from "@/components/templates/WebDevTemplate";
+import TuitionTemplate from "@/components/templates/TuitionTemplate";
+import YogaTemplate from "@/components/templates/YogaTemplate";
+import MusicTemplate from "@/components/templates/MusicTemplate";
 
 const templateComponents: Record<string, React.ComponentType> = {
   doctor: DoctorTemplate,
@@ -28,6 +33,11 @@ const templateComponents: Record<string, React.ComponentType> = {
   "mutual-funds": MutualFundsTemplate,
   broker: BrokerTemplate,
   "general-store": GeneralStoreTemplate,
+  lawyer: LawyerTemplate,
+  "web-dev": WebDevTemplate,
+  tuition: TuitionTemplate,
+  yoga: YogaTemplate,
+  music: MusicTemplate,
 };
 
 export function generateStaticParams() {

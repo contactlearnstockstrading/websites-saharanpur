@@ -1,156 +1,313 @@
 "use client";
 
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import {
   Clock,
   MapPin,
   Phone,
   Star,
-  MessageCircle,
   Stethoscope,
   Shield,
   Syringe,
   Activity,
   FlaskConical,
   HeartPulse,
+  CheckCircle2,
+  Quote,
+  CalendarCheck,
+  Sun,
+  Sunset,
+  Moon,
+  CalendarX,
+  ChevronRight,
+  Award,
 } from "lucide-react";
-import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
-import WhatsAppButton from "@/components/shared/WhatsAppButton";
-import ScrollReveal from "@/components/shared/ScrollReveal";
-import { getWhatsAppLink, getWhatsAppLinkForTemplate } from "@/lib/whatsapp";
 
 const timings = [
-  { session: "Morning", time: "9:00 AM - 12:00 PM", icon: "🌅", available: true },
-  { session: "Afternoon", time: "2:00 PM - 5:00 PM", icon: "☀️", available: true },
-  { session: "Evening", time: "6:00 PM - 8:00 PM", icon: "🌆", available: true },
-  { session: "Sunday", time: "Closed", icon: "📅", available: false },
+  {
+    session: "Morning",
+    time: "9:00 AM - 12:00 PM",
+    icon: Sun,
+    emoji: "🌅",
+    available: true,
+  },
+  {
+    session: "Afternoon",
+    time: "2:00 PM - 5:00 PM",
+    icon: Sunset,
+    emoji: "☀️",
+    available: true,
+  },
+  {
+    session: "Evening",
+    time: "6:00 PM - 8:00 PM",
+    icon: Moon,
+    emoji: "🌆",
+    available: true,
+  },
+  {
+    session: "Sunday",
+    time: "Closed",
+    icon: CalendarX,
+    emoji: "📅",
+    available: false,
+  },
 ];
 
 const services = [
-  { icon: Stethoscope, name: "General Consultation", description: "Comprehensive health assessment and diagnosis for all age groups." },
-  { icon: HeartPulse, name: "Health Checkup", description: "Complete body checkup packages with detailed reports and analysis." },
-  { icon: Syringe, name: "Vaccination", description: "All essential vaccines for children and adults as per schedule." },
-  { icon: Activity, name: "Chronic Disease Management", description: "Long-term care for diabetes, hypertension, thyroid, and more." },
-  { icon: Shield, name: "Minor Procedures", description: "Wound care, suturing, abscess drainage, and minor surgeries." },
-  { icon: FlaskConical, name: "Lab Tests", description: "On-site sample collection with quick and accurate test results." },
+  {
+    icon: Stethoscope,
+    name: "General Consultation",
+    description:
+      "Comprehensive health assessment and diagnosis for patients of all age groups.",
+  },
+  {
+    icon: HeartPulse,
+    name: "Health Checkup",
+    description:
+      "Complete body checkup packages with detailed reports and expert analysis.",
+  },
+  {
+    icon: Syringe,
+    name: "Vaccination",
+    description:
+      "All essential vaccines for children and adults as per the national schedule.",
+  },
+  {
+    icon: Activity,
+    name: "Chronic Disease Mgmt",
+    description:
+      "Ongoing care plans for diabetes, hypertension, thyroid, asthma, and more.",
+  },
+  {
+    icon: Shield,
+    name: "Minor Procedures",
+    description:
+      "Wound care, suturing, abscess drainage, and minor surgical procedures.",
+  },
+  {
+    icon: FlaskConical,
+    name: "Lab Tests",
+    description:
+      "On-site sample collection with quick, accurate, and affordable test results.",
+  },
 ];
 
 const reviews = [
-  { name: "Rajesh K.", initials: "RK", rating: 5, text: "Dr. Sharma is very thorough and patient. He explains everything clearly and takes time to listen. Highly recommended!" },
-  { name: "Priya M.", initials: "PM", rating: 5, text: "Best clinic in Saharanpur. Clean, hygienic, and the staff is very friendly. Never had to wait too long." },
-  { name: "Amit S.", initials: "AS", rating: 4, text: "Great experience with health checkup. Reports were delivered on time and doctor explained everything in detail." },
+  {
+    name: "Rajesh K.",
+    initials: "RK",
+    rating: 5,
+    text: "Dr. Sharma is very thorough and patient. He explains everything clearly and takes time to listen to all concerns. Highly recommended for families!",
+    timeAgo: "2 weeks ago",
+  },
+  {
+    name: "Priya M.",
+    initials: "PM",
+    rating: 5,
+    text: "Best clinic in the area. Extremely clean, hygienic, and the staff is so warm and friendly. My whole family comes here. Never disappointed.",
+    timeAgo: "1 month ago",
+  },
+  {
+    name: "Amit S.",
+    initials: "AS",
+    rating: 4,
+    text: "Great experience with the annual health checkup. Reports came on time and doctor explained every detail patiently. Very professional setup.",
+    timeAgo: "3 weeks ago",
+  },
+];
+
+const highlights = [
+  "15+ Years of Trusted Practice",
+  "4.9 Star Rating (200+ Reviews)",
+  "Affordable & Transparent Pricing",
+  "Same-Day Appointments Available",
 ];
 
 export default function ClinicTemplate() {
+  const whatsappLink = getWhatsAppLink(
+    "Hi! I'd like to book a consultation at Care Clinic with Dr. Sharma."
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-emerald-100">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center shadow-sm">
                 <Stethoscope className="w-5 h-5 text-white" />
               </div>
-              <span className="font-heading font-bold text-emerald-800 text-lg">
-                Care Clinic
-              </span>
+              <div className="leading-tight">
+                <span className="font-bold text-emerald-800 text-lg block">
+                  Care Clinic
+                </span>
+                <span className="text-[10px] text-emerald-500 uppercase tracking-widest font-semibold">
+                  Dr. Sharma
+                </span>
+              </div>
             </div>
-            <WhatsAppButton
-              href={getWhatsAppLinkForTemplate("Clinic")}
-              label="Book Visit"
-              size="sm"
-            />
+            <div className="flex items-center gap-3">
+              <a
+                href="tel:+919876543210"
+                className="hidden sm:flex items-center gap-1.5 text-emerald-700 text-sm font-medium hover:text-emerald-800"
+              >
+                <Phone className="w-4 h-4" />
+                Call Us
+              </a>
+              <WhatsAppButton
+                href={whatsappLink}
+                label="Book Visit"
+                size="sm"
+              />
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Doctor Profile Hero */}
-      <section className="bg-gradient-to-br from-emerald-50 to-green-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50" />
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-200 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-green-200 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <ImagePlaceholder
-                label="Add Doctor Photo"
-                aspectRatio="3/4"
-                className="max-w-sm mx-auto rounded-2xl shadow-xl"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-sm font-body font-medium rounded-full mb-4">
-                General Physician
-              </span>
-              <h1 className="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-3">
-                Dr. Sharma
-              </h1>
-              <p className="text-lg text-gray-500 font-body mb-6">
-                MBBS, MD (Medicine)
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <div className="text-2xl font-heading font-bold text-emerald-600">15+</div>
-                  <div className="text-sm text-gray-500 font-body">Years Experience</div>
-                </div>
-                <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <div className="flex items-center gap-1">
-                    <span className="text-2xl font-heading font-bold text-emerald-600">4.9</span>
-                    <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+            <ScrollReveal>
+              <div className="relative max-w-sm mx-auto md:max-w-none">
+                <div className="absolute -inset-3 bg-emerald-200/40 rounded-3xl blur-xl" />
+                <ImagePlaceholder
+                  label="Dr. Sharma Photo"
+                  aspectRatio="3/4"
+                  icon="👨‍⚕️"
+                  className="relative rounded-2xl shadow-2xl border-4 border-white"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg px-4 py-3 flex items-center gap-2">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="w-4 h-4 text-yellow-400 fill-yellow-400"
+                      />
+                    ))}
                   </div>
-                  <div className="text-sm text-gray-500 font-body">200+ Reviews</div>
+                  <span className="text-sm font-bold text-gray-900">4.9</span>
+                  <span className="text-xs text-gray-400">(200+)</span>
                 </div>
               </div>
+            </ScrollReveal>
 
-              <WhatsAppButton
-                href={getWhatsAppLinkForTemplate("Clinic")}
-                label="Book Appointment"
-                size="lg"
-              />
-            </motion.div>
+            <ScrollReveal delay={0.15}>
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 text-sm font-semibold">
+                  <Award className="w-4 h-4" />
+                  General Physician &amp; Family Doctor
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.1]">
+                  Dr. Sharma
+                </h1>
+                <p className="text-gray-500 text-lg">
+                  MBBS, MD (General Medicine)
+                </p>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white rounded-xl p-5 shadow-sm border border-emerald-100">
+                    <div className="text-3xl font-extrabold text-emerald-600">
+                      15+
+                    </div>
+                    <div className="text-sm text-gray-500 mt-0.5">
+                      Years Experience
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl p-5 shadow-sm border border-emerald-100">
+                    <div className="text-3xl font-extrabold text-emerald-600">
+                      10K+
+                    </div>
+                    <div className="text-sm text-gray-500 mt-0.5">
+                      Happy Patients
+                    </div>
+                  </div>
+                </div>
+
+                <ul className="space-y-2.5">
+                  {highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2.5 text-gray-600 text-sm"
+                    >
+                      <CheckCircle2 className="w-4.5 h-4.5 text-emerald-500 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <WhatsAppButton
+                  href={whatsappLink}
+                  label="Book Appointment"
+                  size="lg"
+                  className="shadow-xl shadow-green-900/20"
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Consultation Timings */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl font-heading font-bold text-gray-900 text-center mb-10">
-              Consultation Timings
-            </h2>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                <CalendarCheck className="w-4 h-4" />
+                OPD Schedule
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+                Consultation Timings
+              </h2>
+              <p className="text-gray-500 mt-3 max-w-lg mx-auto">
+                Walk-in or book your slot in advance via WhatsApp
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {timings.map((slot, i) => (
-              <ScrollReveal key={slot.session} delay={i * 0.1}>
-                <div
-                  className={`rounded-xl p-6 text-center border-2 transition-all ${
+              <ScrollReveal key={slot.session} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className={`rounded-2xl p-6 text-center border-2 transition-all cursor-default ${
                     slot.available
-                      ? "border-emerald-200 bg-emerald-50 hover:border-emerald-300"
-                      : "border-red-200 bg-red-50"
+                      ? "border-emerald-200 bg-emerald-50/50 hover:border-emerald-400 hover:shadow-md"
+                      : "border-red-200 bg-red-50/50"
                   }`}
                 >
-                  <div className="text-3xl mb-3">{slot.icon}</div>
-                  <h3 className="font-heading font-bold text-gray-900 mb-1">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${
+                      slot.available
+                        ? "bg-emerald-100 text-emerald-600"
+                        : "bg-red-100 text-red-500"
+                    }`}
+                  >
+                    <slot.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-1">
                     {slot.session}
                   </h3>
                   <p
-                    className={`font-body text-sm ${
+                    className={`text-sm font-semibold ${
                       slot.available ? "text-emerald-700" : "text-red-600"
                     }`}
                   >
                     {slot.time}
                   </p>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -158,28 +315,41 @@ export default function ClinicTemplate() {
       </section>
 
       {/* Services */}
-      <section className="py-16 bg-emerald-50">
+      <section className="py-20 bg-emerald-50/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl font-heading font-bold text-gray-900 text-center mb-10">
-              Services Offered
-            </h2>
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                <HeartPulse className="w-4 h-4" />
+                What We Offer
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+                Our Services
+              </h2>
+              <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+                Comprehensive primary healthcare services for the whole family,
+                all under one roof.
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, i) => (
-              <ScrollReveal key={service.name} delay={i * 0.1}>
-                <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow h-full">
-                  <div className="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-emerald-600" />
+              <ScrollReveal key={service.name} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-emerald-100/80 h-full cursor-default"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-heading font-bold text-gray-900 text-lg mb-2">
+                  <h3 className="font-bold text-gray-900 text-lg mb-2">
                     {service.name}
                   </h3>
-                  <p className="text-gray-500 font-body text-sm leading-relaxed">
+                  <p className="text-gray-500 text-sm leading-relaxed">
                     {service.description}
                   </p>
-                </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
@@ -187,41 +357,56 @@ export default function ClinicTemplate() {
       </section>
 
       {/* Patient Reviews */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl font-heading font-bold text-gray-900 text-center mb-10">
-              Patient Reviews
-            </h2>
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                <Star className="w-4 h-4" />
+                4.9 out of 5
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+                What Our Patients Say
+              </h2>
+              <p className="text-gray-500 mt-3 max-w-lg mx-auto">
+                Trusted by hundreds of families in the community
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {reviews.map((review, i) => (
               <ScrollReveal key={review.name} delay={i * 0.1}>
-                <div className="bg-emerald-50 rounded-xl p-6 h-full">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-emerald-200 flex items-center justify-center">
-                      <span className="font-heading font-bold text-emerald-700 text-sm">
+                <div className="relative bg-emerald-50/70 rounded-2xl p-6 h-full border border-emerald-100">
+                  <Quote className="w-8 h-8 text-emerald-200 mb-3" />
+                  <p className="text-gray-600 text-sm leading-relaxed mb-5">
+                    {review.text}
+                  </p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-emerald-100">
+                    <div className="w-11 h-11 rounded-full bg-emerald-600 flex items-center justify-center shadow-sm">
+                      <span className="font-bold text-white text-sm">
                         {review.initials}
                       </span>
                     </div>
-                    <div>
-                      <div className="font-heading font-bold text-gray-900">
+                    <div className="flex-1">
+                      <div className="font-bold text-gray-900 text-sm">
                         {review.name}
                       </div>
-                      <div className="flex gap-0.5">
-                        {Array.from({ length: review.rating }).map((_, j) => (
-                          <Star
-                            key={j}
-                            className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"
-                          />
-                        ))}
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-0.5">
+                          {Array.from({ length: review.rating }).map((_, j) => (
+                            <Star
+                              key={j}
+                              className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"
+                            />
+                          ))}
+                        </div>
+                        <span className="text-xs text-gray-400">
+                          {review.timeAgo}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 font-body text-sm leading-relaxed">
-                    &ldquo;{review.text}&rdquo;
-                  </p>
                 </div>
               </ScrollReveal>
             ))}
@@ -230,59 +415,75 @@ export default function ClinicTemplate() {
       </section>
 
       {/* Location */}
-      <section className="py-16 bg-emerald-50">
+      <section className="py-20 bg-emerald-50/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-3xl font-heading font-bold text-gray-900 text-center mb-10">
-              Visit Us
-            </h2>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                <MapPin className="w-4 h-4" />
+                Find Us
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
+                Visit Our Clinic
+              </h2>
+            </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ScrollReveal direction="left">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <ScrollReveal>
               <ImagePlaceholder
-                label="Add Google Maps Embed"
+                label="Google Maps Location"
                 aspectRatio="4/3"
-                className="rounded-xl"
+                className="rounded-2xl shadow-md border border-emerald-100 h-full"
                 icon="🗺️"
               />
             </ScrollReveal>
 
-            <ScrollReveal direction="right">
-              <div className="flex flex-col justify-center space-y-6">
+            <ScrollReveal delay={0.1}>
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-emerald-100 flex flex-col justify-center space-y-7 h-full">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-gray-900 mb-1">Address</h3>
-                    <p className="text-gray-500 font-body text-sm">
-                      123 Health Street, Near City Center<br />
-                      Saharanpur, UP 247001
+                    <h3 className="font-bold text-gray-900 mb-1">Address</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      123 Health Street, Near City Center
+                      <br />
+                      Saharanpur, Uttar Pradesh 247001
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-500 font-body text-sm">+91 XXXXX XXXXX</p>
+                    <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
+                    <p className="text-gray-500 text-sm">+91 98765 43210</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
                     <Clock className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-gray-900 mb-1">Hours</h3>
-                    <p className="text-gray-500 font-body text-sm">
-                      Mon - Sat: 9:00 AM - 8:00 PM<br />
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      Working Hours
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      Mon - Sat: 9:00 AM - 8:00 PM
+                      <br />
                       Sunday: Closed
                     </p>
                   </div>
                 </div>
+                <WhatsAppButton
+                  href={whatsappLink}
+                  label="Get Directions on WhatsApp"
+                  size="md"
+                  className="self-start mt-2"
+                />
               </div>
             </ScrollReveal>
           </div>
@@ -290,65 +491,111 @@ export default function ClinicTemplate() {
       </section>
 
       {/* WhatsApp CTA */}
-      <section className="py-16 bg-gradient-to-r from-emerald-600 to-green-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 via-emerald-600 to-green-600" />
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute -top-20 -left-20 w-80 h-80 bg-white rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-green-300 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-              Book Your Appointment Today
+            <div className="w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20">
+              <CalendarCheck className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+              Book Your Visit Today
             </h2>
-            <p className="text-emerald-100 font-body text-lg mb-8">
-              Quick and easy booking via WhatsApp. Get a consultation with Dr. Sharma.
+            <p className="text-emerald-100 text-lg mb-8 max-w-xl mx-auto">
+              Quick and easy appointment booking via WhatsApp. Get a
+              consultation with Dr. Sharma at your convenience.
             </p>
             <WhatsAppButton
-              href={getWhatsAppLinkForTemplate("Clinic")}
+              href={whatsappLink}
               label="Book on WhatsApp"
               size="lg"
-              className="bg-white !text-emerald-700 hover:!bg-emerald-50"
+              className="bg-white !text-emerald-700 hover:!bg-emerald-50 shadow-2xl"
             />
           </ScrollReveal>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-950 text-white py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center">
-                  <Stethoscope className="w-4 h-4 text-white" />
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center">
+                  <Stethoscope className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-heading font-bold text-lg">Care Clinic</span>
+                <div className="leading-tight">
+                  <span className="font-bold block">Care Clinic</span>
+                  <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold">
+                    Dr. Sharma
+                  </span>
+                </div>
               </div>
-              <p className="text-gray-400 font-body text-sm">
-                Quality healthcare with a personal touch. Your trusted neighborhood clinic.
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Quality healthcare with a personal touch. Your trusted
+                neighborhood clinic for the whole family.
               </p>
             </div>
             <div>
-              <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-gray-400 mb-3">
-                Timings
+              <h3 className="font-bold text-gray-300 uppercase text-xs tracking-wider mb-4">
+                Services
               </h3>
-              <p className="text-gray-400 font-body text-sm">Mon - Sat: 9 AM - 8 PM</p>
-              <p className="text-gray-400 font-body text-sm">Sunday: Closed</p>
+              <ul className="space-y-2.5">
+                {services.slice(0, 4).map((s) => (
+                  <li
+                    key={s.name}
+                    className="flex items-center gap-2 text-gray-400 text-sm"
+                  >
+                    <ChevronRight className="w-3 h-3 text-emerald-400" />
+                    {s.name}
+                  </li>
+                ))}
+              </ul>
             </div>
             <div>
-              <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-gray-400 mb-3">
+              <h3 className="font-bold text-gray-300 uppercase text-xs tracking-wider mb-4">
+                Timings
+              </h3>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <p className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-emerald-400" />
+                  Mon - Sat: 9 AM - 8 PM
+                </p>
+                <p className="flex items-center gap-2">
+                  <CalendarX className="w-3.5 h-3.5 text-red-400" />
+                  Sunday: Closed
+                </p>
+              </div>
+            </div>
+            <div>
+              <h3 className="font-bold text-gray-300 uppercase text-xs tracking-wider mb-4">
                 Contact
               </h3>
-              <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-body text-sm"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp Us
-              </a>
+              <div className="space-y-2 text-gray-400 text-sm mb-5">
+                <p className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                  +91 98765 43210
+                </p>
+                <p className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                  Saharanpur, UP
+                </p>
+              </div>
+              <WhatsAppButton
+                href={whatsappLink}
+                label="WhatsApp Us"
+                size="sm"
+              />
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-500 font-body text-sm">
-              &copy; {new Date().getFullYear()} Care Clinic. All rights reserved.
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-500 text-sm">
+              &copy; {new Date().getFullYear()} Care Clinic. All rights
+              reserved.
             </p>
           </div>
         </div>

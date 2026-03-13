@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import ScrollReveal from "./ScrollReveal";
 
 interface Props {
   badge?: string;
@@ -16,26 +14,20 @@ export default function SectionHeader({
   className = "",
 }: Props) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={`text-center mb-12 ${className}`}
-    >
+    <ScrollReveal className={`text-center mb-14 ${className}`}>
       {badge && (
-        <span className="inline-block px-4 py-1.5 rounded-full text-sm font-body font-medium mb-4 bg-beige-300/50 text-beige-700">
+        <span className="inline-block px-4 py-1.5 rounded-full text-xs font-body font-bold uppercase tracking-widest mb-4 bg-gradient-to-r from-orange-500/10 to-pink-500/10 text-orange-400 border border-orange-500/20">
           {badge}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-beige-900">
+      <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-white tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg font-body max-w-2xl mx-auto text-beige-600">
+        <p className="text-lg font-body max-w-2xl mx-auto text-zinc-400">
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </ScrollReveal>
   );
 }

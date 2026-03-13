@@ -1,7 +1,7 @@
 export interface Template {
   slug: string;
   name: string;
-  category: "healthcare" | "food" | "lifestyle" | "finance" | "retail";
+  category: "healthcare" | "food" | "lifestyle" | "finance" | "retail" | "services" | "education";
   description: string;
   features: string[];
   color: string;
@@ -14,6 +14,8 @@ export const categories = [
   { key: "lifestyle", label: "Lifestyle" },
   { key: "finance", label: "Finance" },
   { key: "retail", label: "Retail" },
+  { key: "services", label: "Services" },
+  { key: "education", label: "Education" },
 ] as const;
 
 export const templates: Template[] = [
@@ -112,5 +114,45 @@ export const templates: Template[] = [
     description: "Modern general store with product categories, bestsellers, and delivery information.",
     features: ["Product Grid", "Categories", "Reviews", "WhatsApp Order"],
     color: "#9c27b0",
+  },
+  {
+    slug: "lawyer",
+    name: "Lawyer / Legal Services",
+    category: "services",
+    description: "Professional legal services website with practice areas, case process, and client testimonials.",
+    features: ["Practice Areas", "Process Steps", "Testimonials", "WhatsApp Consult"],
+    color: "#b45309",
+  },
+  {
+    slug: "web-dev",
+    name: "Website Development",
+    category: "services",
+    description: "Web development agency with services, portfolio, pricing plans, and client reviews.",
+    features: ["Services Grid", "Portfolio", "Pricing Plans", "WhatsApp Quote"],
+    color: "#06b6d4",
+  },
+  {
+    slug: "tuition",
+    name: "Tuition / Coaching",
+    category: "education",
+    description: "Coaching institute with subjects, programs, batch timings, and student results.",
+    features: ["Subjects Grid", "Batch Timings", "Results", "WhatsApp Enroll"],
+    color: "#f97316",
+  },
+  {
+    slug: "yoga",
+    name: "Yoga Classes",
+    category: "lifestyle",
+    description: "Yoga studio with class styles, schedule, membership plans, and student transformations.",
+    features: ["Class Schedule", "Membership Plans", "Testimonials", "WhatsApp Booking"],
+    color: "#34d399",
+  },
+  {
+    slug: "music",
+    name: "Music Teacher",
+    category: "education",
+    description: "Music academy with instruments, programs, fee structure, and student reviews.",
+    features: ["Instruments", "Programs", "Fee Structure", "WhatsApp Enroll"],
+    color: "#f43f5e",
   },
 ];

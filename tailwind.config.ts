@@ -11,21 +11,9 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        beige: {
-          50: "#fdfcfa",
-          100: "#faf7f2",
-          200: "#f5f0e8",
-          300: "#e8dfd3",
-          400: "#d4c7b5",
-          500: "#b8a68e",
-          600: "#8b7355",
-          700: "#6b5940",
-          800: "#5c4a32",
-          900: "#2c2418",
-        },
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
       },
     },

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Libre_Franklin } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import { siteConfig } from "@/config/site-config";
 
-const cormorant = Cormorant_Garamond({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
-const libre = Libre_Franklin({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -79,10 +79,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#f5f0e8" />
+        <meta name="theme-color" content="#09090b" />
       </head>
       <body
-        className={`${cormorant.variable} ${libre.variable} font-body antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} font-body antialiased`}
       >
         {children}
         <FloatingWhatsApp />

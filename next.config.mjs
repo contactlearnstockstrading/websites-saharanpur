@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   poweredByHeader: false,
-  compress: true,
   images: {
-    formats: ["image/avif", "image/webp"],
+    unoptimized: true,
   },
 };
 
