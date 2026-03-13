@@ -80,10 +80,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#09090b" />
-        {/* Google AdSense — replace ca-pub-XXXXXXX with your publisher ID */}
+        {/* Google AdSense */}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7739167548285591"
           crossOrigin="anonymous"
         />
       </head>
