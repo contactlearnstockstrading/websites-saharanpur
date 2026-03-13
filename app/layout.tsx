@@ -80,6 +80,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#09090b" />
+        <meta name="google-adsense-account" content="ca-pub-7739167548285591" />
         {/* Google AdSense */}
         <script
           async
