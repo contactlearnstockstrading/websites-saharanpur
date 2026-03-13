@@ -3,9 +3,19 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site-config";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mysaharanpur.store";
+
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `Privacy Policy for ${siteConfig.business.name}. Learn how we collect, use, and protect your information.`,
+  description: `Privacy Policy for ${siteConfig.business.name}. Learn how we collect, use, and protect your information on mysaharanpur.store.`,
+  alternates: {
+    canonical: `${siteUrl}/privacy-policy`,
+  },
+  robots: {
+    index: true,
+    follow: false,
+  },
 };
 
 export default function PrivacyPolicy() {

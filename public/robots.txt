@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shopwebsaharanpur.com/sitemap.xml
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://mysaharanpur.store/sitemap.xml

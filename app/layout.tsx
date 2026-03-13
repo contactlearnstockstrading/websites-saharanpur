@@ -3,6 +3,11 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 import { siteConfig } from "@/config/site-config";
+import {
+  LocalBusinessJsonLd,
+  OrganizationJsonLd,
+  WebsiteJsonLd,
+} from "@/components/seo/JsonLd";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -17,16 +22,16 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shopwebsaharanpur.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mysaharanpur.store";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ShopWeb Saharanpur — Premium Websites for Local Businesses",
+    default: "ShopWeb Saharanpur — Premium Websites for Local Businesses | Website Design Saharanpur",
     template: "%s | ShopWeb Saharanpur",
   },
   description:
-    "Beautiful, ready-to-launch website templates for doctors, bakeries, salons, cafes, and more in Saharanpur. Get your business online in 24 hours.",
+    "Saharanpur's #1 website design agency. 23+ ready-to-launch templates for doctors, bakeries, salons, gyms, restaurants, jewellers & more. Get your business online in 24 hours. Starting ₹2,999.",
   keywords: [
     "website design Saharanpur",
     "web development Saharanpur",
@@ -35,12 +40,47 @@ export const metadata: Metadata = {
     "website for shops Saharanpur",
     "website for bakery Saharanpur",
     "website for salon Saharanpur",
+    "website for restaurant Saharanpur",
+    "website for gym Saharanpur",
+    "website for jewellery shop Saharanpur",
+    "website for pharmacy Saharanpur",
+    "website for real estate Saharanpur",
+    "custom website builder India",
+    "custom website builder Saharanpur",
+    "custom website builder UP",
+    "custom website design India",
+    "custom website design Saharanpur",
+    "cheap website India",
+    "cheap website Saharanpur",
+    "cheap website UP",
+    "cheap website design India",
+    "cheap custom website India",
+    "cheap custom website Saharanpur",
     "affordable website India",
+    "affordable website Saharanpur",
+    "affordable website UP",
+    "affordable custom website India",
+    "low cost website India",
+    "low cost website Saharanpur",
+    "best website design Saharanpur",
+    "best website designer in Saharanpur",
+    "website developer near me Saharanpur",
+    "website maker Saharanpur",
+    "website banwaye Saharanpur",
+    "sasti website India",
+    "sasti website Saharanpur",
     "local business website UP",
+    "local business website India",
+    "small business website India",
     "ShopWeb Saharanpur",
+    "mysaharanpur.store",
   ],
-  authors: [{ name: siteConfig.business.name }],
+  authors: [{ name: siteConfig.business.name, url: siteUrl }],
   creator: siteConfig.business.name,
+  publisher: siteConfig.business.name,
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -48,13 +88,14 @@ export const metadata: Metadata = {
     siteName: siteConfig.business.name,
     title: "ShopWeb Saharanpur — Premium Websites for Local Businesses",
     description:
-      "Beautiful, ready-to-launch website templates for doctors, bakeries, salons, cafes, and more in Saharanpur. Get your business online in 24 hours.",
+      "23+ stunning website templates for local businesses in Saharanpur. Doctors, salons, restaurants, gyms & more. Live in 24 hours, starting ₹2,999.",
   },
   twitter: {
     card: "summary_large_image",
     title: "ShopWeb Saharanpur — Premium Websites for Local Businesses",
     description:
-      "Beautiful, ready-to-launch website templates for local businesses in Saharanpur.",
+      "23+ website templates for local businesses in Saharanpur. Go live in 24 hours!",
+    creator: "@shopwebsaharanpur",
   },
   robots: {
     index: true,
@@ -67,6 +108,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "google-site-verification-code",
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -91,6 +136,9 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} font-body antialiased`}
       >
+        <LocalBusinessJsonLd />
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
         {children}
         <FloatingWhatsApp />
       </body>

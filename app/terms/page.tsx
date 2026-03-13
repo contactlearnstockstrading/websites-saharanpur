@@ -3,9 +3,19 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { siteConfig } from "@/config/site-config";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mysaharanpur.store";
+
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `Terms of Service for ${siteConfig.business.name}. Read our terms and conditions.`,
+  description: `Terms of Service for ${siteConfig.business.name}. Read our terms and conditions for website design services in Saharanpur.`,
+  alternates: {
+    canonical: `${siteUrl}/terms`,
+  },
+  robots: {
+    index: true,
+    follow: false,
+  },
 };
 
 export default function Terms() {

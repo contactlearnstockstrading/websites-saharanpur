@@ -5,9 +5,27 @@ import { siteConfig } from "@/config/site-config";
 import { MapPin, Mail, MessageCircle, Zap, Users, Globe, Clock } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mysaharanpur.store";
+
 export const metadata: Metadata = {
-  title: "About Us",
-  description: `About ${siteConfig.business.name}. We build premium websites for local businesses in Saharanpur.`,
+  title: "About Us — ShopWeb Saharanpur | Website Design Agency",
+  description: `About ${siteConfig.business.name}. Saharanpur's trusted website design agency founded by ${siteConfig.business.owner}. 23+ templates, 50+ happy clients. Get your business online in 24 hours.`,
+  keywords: [
+    "ShopWeb Saharanpur about",
+    "website design agency Saharanpur",
+    "web developer Saharanpur",
+    siteConfig.business.owner,
+    "Saharanpur website company",
+  ],
+  alternates: {
+    canonical: `${siteUrl}/about`,
+  },
+  openGraph: {
+    title: "About ShopWeb Saharanpur",
+    description: `Saharanpur's trusted website design agency. 23+ templates, 50+ clients.`,
+    url: `${siteUrl}/about`,
+  },
 };
 
 export default function About() {
@@ -39,7 +57,7 @@ export default function About() {
               { icon: Globe, value: "50+", label: "Websites Delivered" },
               { icon: Users, value: "50+", label: "Happy Clients" },
               { icon: Clock, value: "24hrs", label: "Average Delivery" },
-              { icon: Zap, value: "17+", label: "Template Designs" },
+              { icon: Zap, value: "23+", label: "Template Designs" },
             ].map((stat) => (
               <div key={stat.label} className="bg-zinc-900 border border-white/5 rounded-xl p-5 text-center">
                 <stat.icon className="w-5 h-5 text-orange-400 mx-auto mb-2" />
@@ -78,7 +96,7 @@ export default function About() {
             <h2 className="text-2xl font-heading font-bold mb-4">What We Offer</h2>
             <ul className="space-y-3 text-zinc-400 font-body text-sm">
               {[
-                "17+ professionally designed website templates for every type of business",
+                "23+ professionally designed website templates for every type of business",
                 "Complete website setup with your content, images, and branding",
                 "Mobile-responsive design that looks great on every device",
                 "WhatsApp integration for instant customer communication",
