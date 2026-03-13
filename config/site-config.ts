@@ -7,7 +7,9 @@ export const siteConfig = {
     name: "ShopWeb Saharanpur",
     tagline: "Premium Websites for Local Businesses",
     city: "Saharanpur",
-    email: "hello@shopwebsaharanpur.com",
+    email: "contactlearnstockstrading@gmail.com",
+    owner: "Abha Gupta",
+    address: "6/6236, New Madhav Nagar, Near Company Garden Gate, Saharanpur",
   },
   social: {
     instagram: "",

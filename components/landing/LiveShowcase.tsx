@@ -2,20 +2,20 @@
 
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { ExternalLink, Globe, Zap, TrendingUp } from "lucide-react";
+import { ExternalLink, Globe, Zap, TrendingUp, MapPin, Users, Star } from "lucide-react";
 
 export default function LiveShowcase() {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SectionHeader
-        badge="Live Example"
-        title="See Our Work in Action"
-        subtitle="Don't just take our word for it — check out a real website we built"
+        badge="Built in Saharanpur"
+        title="Real Websites, Real Results"
+        subtitle="Websites we've built for businesses right here in Saharanpur — your neighbours trust us"
       />
 
+      {/* Live site showcase */}
       <ScrollReveal>
-        <div className="relative group">
-          {/* Glow effect */}
+        <div className="relative group mb-12">
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 via-pink-500/20 to-violet-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
           <div className="relative bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden hover:border-white/15 transition-all">
@@ -23,7 +23,6 @@ export default function LiveShowcase() {
               {/* Preview */}
               <div className="relative overflow-hidden">
                 <div className="aspect-[16/10] bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center relative">
-                  {/* Browser chrome mockup */}
                   <div className="absolute top-0 left-0 right-0 h-8 bg-zinc-800 border-b border-white/5 flex items-center px-4 gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
@@ -56,16 +55,23 @@ export default function LiveShowcase() {
 
               {/* Details */}
               <div className="p-8 lg:p-10 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold tracking-wider w-fit mb-5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  LIVE
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    LIVE
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold tracking-wider">
+                    <MapPin className="w-3 h-3" />
+                    SAHARANPUR
+                  </div>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-3 tracking-tight">
                   LearnStocksTrading.com
                 </h3>
                 <p className="text-zinc-400 font-body text-sm leading-relaxed mb-6">
-                  A full-featured stock trading education platform built by our team — designed,
-                  developed, and deployed. This is the quality you get when you work with us.
+                  A complete stock trading education platform built for a Saharanpur-based
+                  educator — designed, developed, and deployed by our team. This is the quality
+                  every local business deserves.
                 </p>
 
                 <div className="grid grid-cols-3 gap-4 mb-8">
@@ -93,6 +99,46 @@ export default function LiveShowcase() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Saharanpur trust bar */}
+      <ScrollReveal delay={0.15}>
+        <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: MapPin,
+                title: "100% Local",
+                desc: "Visit us at New Madhav Nagar, Near Company Garden Gate",
+              },
+              {
+                icon: Users,
+                title: "50+ Businesses",
+                desc: "Shops, clinics, schools & more across Saharanpur trust us",
+              },
+              {
+                icon: Star,
+                title: "4.9★ Rating",
+                desc: "Rated by real Saharanpur business owners on Google",
+              },
+              {
+                icon: Zap,
+                title: "24hr Delivery",
+                desc: "Your website goes live within a day — no long waits",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/10 to-pink-500/5 flex items-center justify-center border border-orange-500/10 shrink-0">
+                  <item.icon className="w-5 h-5 text-orange-400" />
+                </div>
+                <div>
+                  <p className="text-white font-heading font-bold text-sm">{item.title}</p>
+                  <p className="text-zinc-500 font-body text-xs leading-relaxed mt-0.5">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </ScrollReveal>

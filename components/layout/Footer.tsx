@@ -2,13 +2,13 @@
 
 import { siteConfig } from "@/config/site-config";
 import { getWhatsAppLink } from "@/lib/whatsapp";
-import { MessageCircle, Mail, Zap } from "lucide-react";
+import { MessageCircle, Mail, Zap, MapPin, User } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 border-t border-white/5 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center">
@@ -33,6 +33,7 @@ export default function Footer() {
                 { label: "Templates", href: "#templates" },
                 { label: "How It Works", href: "#how-it-works" },
                 { label: "Pricing", href: "#pricing" },
+                { label: "Testimonials", href: "#testimonials" },
               ].map((link) => (
                 <li key={link.href}>
                   <a
@@ -44,6 +45,22 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <h3 className="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-zinc-400">
+              Office Location
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2 text-sm text-zinc-500 font-body">
+                <MapPin className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{siteConfig.business.address}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-zinc-500 font-body">
+                <User className="w-4 h-4 text-orange-400 shrink-0" />
+                <span>{siteConfig.business.owner}, Founder</span>
+              </div>
+            </div>
           </div>
 
           <div>
