@@ -88,10 +88,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-8 pt-8 text-center">
-          <p className="text-sm text-zinc-600 font-body">
-            &copy; {new Date().getFullYear()} {siteConfig.business.name}. All rights reserved.
-          </p>
+        <div className="border-t border-white/5 mt-8 pt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-zinc-600 font-body">
+              &copy; {new Date().getFullYear()} {siteConfig.business.name}. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              {[
+                { label: "About", href: "/about" },
+                { label: "Privacy Policy", href: "/privacy-policy" },
+                { label: "Terms of Service", href: "/terms" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors font-body"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>
